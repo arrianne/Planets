@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import ARKit
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var sceneView: ARSCNView!
+    // used to track orientation and position at all times
+    let configuration = ARWorldTrackingConfiguration()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.

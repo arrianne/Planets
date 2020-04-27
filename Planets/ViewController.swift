@@ -17,7 +17,11 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         let earth = SCNNode()
+        let earthDay = #imageLiteral(resourceName: "Earth Day")
         earth.geometry = SCNSphere(radius: 0.2)
+        earth.geometry?.firstMaterial?.diffuse.contents = earthDay
+        earth.position = SCNVector3(0,0,-1)
+        self.sceneView.scene.rootNode.addChildNode(earth)
         
     }
     

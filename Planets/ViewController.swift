@@ -15,9 +15,17 @@ class ViewController: UIViewController {
     // used to track orientation and position at all times
     let configuration = ARWorldTrackingConfiguration()
     
+    override func viewDidAppear(_ animated: Bool) {
+        let earth = SCNNode()
+        earth.geometry = SCNSphere(radius: 0.2)
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
+        self.sceneView.session.run(configuration)
     }
 
 

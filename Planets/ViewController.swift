@@ -20,16 +20,24 @@ class ViewController: UIViewController {
        // Do any additional setup after loading the view.
        self.sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
        self.sceneView.session.run(configuration)
+        
+        // the only way for specular to work is with a light source
+        self.sceneView.autoenablesDefaultLighting = true
            
     }
     
     override func viewDidAppear(_ animated: Bool) {
         let earth = SCNNode()
         let earthDay = #imageLiteral(resourceName: "Earth Day")
+        let earthSpecular = #imageLiteral(resourceName: "Earth Specular")
+        
         earth.geometry = SCNSphere(radius: 0.2)
         earth.geometry?.firstMaterial?.diffuse.contents = earthDay
+        // only the water is relfective
+        earth.geometry?.firstMaterial?.specular.contents = earthSpecular
         earth.position = SCNVector3(0,0,-1)
         self.sceneView.scene.rootNode.addChildNode(earth)
+        
         // SCNAction is an animation class which will change the structure or display of a node
         let action = SCNAction.rotateBy(x: 0, y: CGFloat(360.degreesToRadians), z: 0, duration: 8 )
         

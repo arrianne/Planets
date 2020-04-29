@@ -33,7 +33,9 @@ class ViewController: UIViewController {
         // SCNAction is an animation class which will change the structure or display of a node
         let action = SCNAction.rotateBy(x: 0, y: CGFloat(360.degreesToRadians), z: 0, duration: 8 )
         
-        earth.runAction(action)
+        let forever = SCNAction.repeatForever(action)
+        
+        earth.runAction(forever)
         
     }
     

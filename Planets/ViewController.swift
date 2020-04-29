@@ -30,11 +30,17 @@ class ViewController: UIViewController {
         let earth = SCNNode()
         let earthDay = #imageLiteral(resourceName: "Earth Day")
         let earthSpecular = #imageLiteral(resourceName: "Earth Specular")
+        let earthEmission = #imageLiteral(resourceName: "Earth Emission")
+        let earthNormal = #imageLiteral(resourceName: "Earth Normal")
         
         earth.geometry = SCNSphere(radius: 0.2)
         earth.geometry?.firstMaterial?.diffuse.contents = earthDay
-        // only the water is relfective
+        // Adds reflection - onlu to water
         earth.geometry?.firstMaterial?.specular.contents = earthSpecular
+        // Adds addition clouds on top
+        earth.geometry?.firstMaterial?.emission.contents = earthEmission
+        // Adds 3 dimensional detail to node
+        earth.geometry?.firstMaterial?.normal.contents = earthNormal
         earth.position = SCNVector3(0,0,-1)
         self.sceneView.scene.rootNode.addChildNode(earth)
         
